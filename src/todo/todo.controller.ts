@@ -6,8 +6,8 @@ export class TodoController {
 
     constructor(private TodoService: TodoService){}
     @Get()
-    indexRoot(): string {
-        return 'Page Home';
+    indexRoot() {
+        return this.TodoService.showAll();
     }
 
     // @Get(':id')
