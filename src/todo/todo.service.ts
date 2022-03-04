@@ -27,4 +27,9 @@ export class TodoService {
     async detailData(id: string){
         return await this.todolistRepository.findOne({ where: {id}})
     }
+
+    async update(id: string, data: Partial<TodoDTO>) {
+        await this.todolistRepository.update({ id }, data);
+        return await this.todolistRepository.findOne({ where: {id}})
+    }
 }

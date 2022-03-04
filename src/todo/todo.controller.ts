@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { TodoDTO } from './todo.dto';
 
@@ -15,6 +15,10 @@ export class TodoController {
     @Get(':id')
     indexShow(@Param('id') id: string) {
        return this.TodoService.detailData(id);
+    }
+    @Put(':id')
+    indexUpdate(@Param('id') id: string, @Body() data: Partial<TodoDTO>) {
+       return this.TodoService.update(id, data);
     }
 
     // @Get('service')
