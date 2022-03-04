@@ -12,9 +12,14 @@ export class TodoController {
         return this.TodoService.showAll();
     }
 
-    // @Get(':id')
-    // indexShow(@Param('id') id: string): string {
-    //     return 'Page Detail Data ' + id;
+    @Get(':id')
+    indexShow(@Param('id') id: string) {
+       return this.TodoService.detailData(id);
+    }
+
+    // @Get('service')
+    // detailService() {
+    //     return this.TodoService.allData();
     // }
 
     @Post()
@@ -22,10 +27,5 @@ export class TodoController {
         return this.TodoService.create(data);
     }
 
-
-    @Get('service')
-    detailService() {
-        return this.TodoService.allData();
-    }
 
 }

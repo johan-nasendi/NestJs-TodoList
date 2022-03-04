@@ -23,4 +23,8 @@ export class TodoService {
         await this.todolistRepository.save(todolistNew)
         return todolistNew
     }
+
+    async detailData(id: string){
+        return await this.todolistRepository.findOne({ where: {id}})
+    }
 }
