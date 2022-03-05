@@ -32,4 +32,9 @@ export class TodoService {
         await this.todolistRepository.update({ id }, data);
         return await this.todolistRepository.findOne({ where: {id}})
     }
+
+    async remove(id: string) {
+        await this.todolistRepository.delete({id})
+        return {deleted: true}
+    }
 }

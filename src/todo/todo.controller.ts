@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { TodoDTO } from './todo.dto';
 
@@ -11,6 +11,10 @@ export class TodoController {
     indexRoot() {
         return this.TodoService.showAll();
     }
+    @Post()
+    storeRecord(@Body()  data: TodoDTO){
+        return this.TodoService.create(data);
+    }
 
     @Get(':id')
     indexShow(@Param('id') id: string) {
@@ -21,15 +25,16 @@ export class TodoController {
        return this.TodoService.update(id, data);
     }
 
+    @Delete(':id')
+    deleteData(@Param('id') id: string) {
+       return this.TodoService.remove(id);
+    }
     // @Get('service')
     // detailService() {
     //     return this.TodoService.allData();
     // }
 
-    @Post()
-    storeRecord(@Body()  data: TodoDTO){
-        return this.TodoService.create(data);
-    }
+   
 
 
 }
